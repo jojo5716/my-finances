@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/data_current_month"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/btn_add_budget"
+        android:layout_below="@+id/lb_total_spent" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add budget"
+        android:id="@+id/btn_add_budget"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_total_spent"
+        android:id="@+id/textView13"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:paddingLeft="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_total_spent"
+        android:layout_below="@+id/textView13"
+        android:layout_toLeftOf="@+id/btn_add_budget"
+        android:layout_toStartOf="@+id/btn_add_budget"
+        android:layout_marginRight="31dp"
+        android:layout_marginEnd="31dp"
+        android:text="Total spent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_total_spent_percent"
+        android:id="@+id/textView15"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/textView13"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:paddingRight="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_total_spent_percent"
+        android:paddingLeft="10dp"
+        android:layout_alignTop="@+id/lb_total_spent"
+        android:layout_toRightOf="@+id/btn_add_budget"
+        android:layout_toEndOf="@+id/btn_add_budget"
+        android:text="Total spent percent" />
+</RelativeLayout>

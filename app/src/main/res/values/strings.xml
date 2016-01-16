@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">My finances</string>
+    <string name="salary">Salary</string>
+    <string name="add_salary">Add salary</string>
+    <string name="txt_initial">You have not set up your account.</string>
+    <string name="txt_bad"> :( </string>
+    <string name="txt_add_salary">Enter your net pay to be able to manage your finances</string>
+    <string name="txt_current">Current</string>
+    <string name="txt_dont_have_budget">You do not hace any budget yet.</string>
+    <string name="txt_total_spent">Total budgets</string>
+    <string name="txt_total_spent_percent">Total budgets(%)</string>
+    <string name="txt_past_expenses">Past expenses.</string>
+
+</resources>
