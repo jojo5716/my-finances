@@ -1,14 +1,14 @@
 <resources>
-    <string name="app_name">My finances</string>
-    <string name="salary">Salary</string>
-    <string name="add_salary">Add salary</string>
-    <string name="txt_initial">You have not set up your account.</string>
+    <string name="app_name">Mis finanzas</string>
+    <string name="salary">Salario</string>
+    <string name="add_salary">Agregar salario</string>
+    <string name="txt_initial">Aún no has especificado tu salario.</string>
     <string name="txt_bad"> :( </string>
-    <string name="txt_add_salary">Enter your net pay to be able to manage your finances</string>
-    <string name="txt_current">Current</string>
-    <string name="txt_dont_have_budget">You do not hace any budget yet.</string>
-    <string name="txt_total_spent">Total budgets</string>
-    <string name="txt_total_spent_percent">Total budgets(%)</string>
-    <string name="txt_past_expenses">Past expenses.</string>
+    <string name="txt_add_salary">Ingresa tu salario para empezar a manejar tus finanzas</string>
+    <string name="txt_current">Actual</string>
+    <string name="txt_dont_have_budget">Aún no tienen ningun objetivo.</string>
+    <string name="txt_total_spent">Total objetivos</string>
+    <string name="txt_total_spent_percent">Total objetivos(%)</string>
+    <string name="txt_past_expenses">Gastos anteriores.</string>
 
 </resources>

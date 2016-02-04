@@ -5,7 +5,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Budget name"
+        android:text="Objetivo"
         android:id="@+id/textView8"
         android:layout_marginTop="65dp"
         android:textSize="@dimen/activity_vertical_label"
@@ -28,15 +28,15 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Limit amount"
+        android:text="Limite"
         android:id="@+id/textView9"
         android:layout_marginTop="60dp"
         android:textSize="@dimen/activity_vertical_label"
         android:textStyle="bold"
         android:paddingLeft="10dp"
         android:layout_below="@+id/txt_name"
-        android:layout_toLeftOf="@+id/txt_name"
-        android:layout_toStartOf="@+id/txt_name" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -45,13 +45,15 @@
         android:ems="10"
         android:id="@+id/txt_max_amount"
         android:layout_alignBottom="@+id/textView9"
-        android:layout_toRightOf="@+id/textView9"
-        android:layout_toEndOf="@+id/textView9" />
+        android:layout_alignLeft="@+id/txt_name"
+        android:layout_alignStart="@+id/txt_name"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Repeat monthly?"
+        android:text="¿Se repetirá mensualmente?"
         android:id="@+id/cb_repeat"
         android:layout_marginTop="75dp"
         android:textSize="@dimen/activity_vertical_label"
@@ -64,11 +66,10 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save budget"
+        android:text="Guardar"
         android:id="@+id/btn_save"
+        android:layout_marginTop="56dp"
         android:layout_below="@+id/cb_repeat"
-        android:layout_toRightOf="@+id/textView9"
-        android:layout_toEndOf="@+id/textView9"
-        android:layout_marginTop="71dp" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

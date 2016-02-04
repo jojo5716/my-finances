@@ -5,7 +5,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Spent(*)"
+        android:text="Gastos(*)"
         android:id="@+id/textView14"
         android:textSize="20dp"
         android:layout_marginTop="36dp"
@@ -27,7 +27,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Comment"
+        android:text="Comentario"
         android:id="@+id/textView16"
         android:textSize="20dp"
         android:layout_marginTop="38dp"
@@ -48,7 +48,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"
+        android:text="Guardar"
         android:id="@+id/btn_save"
         android:layout_below="@+id/txt_comment"
         android:layout_alignRight="@+id/txt_comment"
@@ -57,7 +57,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Budget name"
+        android:text="Nombre del objetivo"
         android:id="@+id/lb_buget_name"
         android:textSize="@dimen/activity_vertical_label_short"
         android:layout_alignParentTop="true"

@@ -8,7 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ProgressBar;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class Splash extends AppCompatActivity {
 
@@ -58,7 +61,6 @@ public class Splash extends AppCompatActivity {
                     if(c.moveToFirst()){
                         principal = new Intent(Splash.this, Dashboard.class);
                     }
-
                 }
 
                 startActivity(principal);

@@ -93,7 +93,6 @@ public class RegisterSpent extends AppCompatActivity{
 
                     DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
                     Date date = new Date();
-                    System.out.println(dateFormat.format(date));
 
                     db.execSQL("INSERT INTO Expenses (year, month, id_budget, created, spent, comments) " +
                                 "VALUES (" + current_year + "," + current_month + "," + id_budget + ",'" +

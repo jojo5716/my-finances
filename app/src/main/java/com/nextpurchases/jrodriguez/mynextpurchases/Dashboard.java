@@ -1,17 +1,11 @@
 package com.nextpurchases.jrodriguez.mynextpurchases;
 
 import android.app.Dialog;
-import android.app.LauncherActivity;
-import android.content.ClipData;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
-import android.view.ContextMenu;
-import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -47,7 +41,8 @@ public class Dashboard extends AppCompatActivity {
     private int total_spent = 0;
     private double total_budget = 0.0;
     private double salary = 0.0;
-
+    private int current_salary;
+    private int last_amount_selected;
     private String db_name = "DBSalaryBase2";
 
 
@@ -67,19 +62,17 @@ public class Dashboard extends AppCompatActivity {
         btn_add_budget = (Button)findViewById(R.id.btn_add_budget);
 
 
-
         TabHost tabs_host =(TabHost)findViewById(R.id.tabHost);
         tabs_host.setup();
 
         TabHost.TabSpec tab1 = tabs_host.newTabSpec("tab1");
-        TabHost.TabSpec tab2 = tabs_host.newTabSpec("tab1");
-        TabHost.TabSpec tab3 = tabs_host.newTabSpec("tab1");
+        TabHost.TabSpec tab2 = tabs_host.newTabSpec("tab2");
 
         tab1.setIndicator("Meses anteriores");
         tab1.setContent(R.id.linearLayout);
 
         tab2.setIndicator(getMonthYearName());
-                tab2.setContent(R.id.linearLayout2);
+        tab2.setContent(R.id.linearLayout2);
 
         tabs_host.addTab(tab1);
         tabs_host.addTab(tab2);
@@ -103,11 +96,11 @@ public class Dashboard extends AppCompatActivity {
         if(db != null){
             Cursor c = db.rawQuery("SELECT * FROM SalaryBase WHERE year=" + String.valueOf(current_year) + " AND month=" + String.valueOf(current_month), null);
             if(c.moveToFirst()){
-                // Save the salary for calculate the spent percent.
+                // Save the salary to calculate the spent percent.
                 salary = Double.parseDouble(c.getString(3));
-
+                current_salary = c.getInt(4);
                 lb_salary.setText(c.getString(3) + "€");
-                lb_current.setText(c.getString(4) + "€");
+                    lb_current.setText(String.valueOf(current_salary) + "€");
             }
 
             // Get before months.
@@ -170,6 +163,8 @@ public class Dashboard extends AppCompatActivity {
                     final Integer position_item = position;
 
                     final Dialog dialog = new Dialog(Dashboard.this);
+                    last_amount_selected = budget_item.getMax_amount();
+
                     dialog.setTitle("Options (" + budget_item.getName() + ")");
                     dialog.setContentView(R.layout.menu);
                     dialog.show();
@@ -182,6 +177,7 @@ public class Dashboard extends AppCompatActivity {
                             add_budget.putExtra("budget_id", budget_item.getId());
                             add_budget.putExtra("budget_name", budget_item.getName());
                             add_budget.putExtra("budget_maxamount", budget_item.getMax_amount());
+
 
                             startActivity(add_budget);
                         }
@@ -198,6 +194,10 @@ public class Dashboard extends AppCompatActivity {
                                 adapter_budgets.remove(adapter_budgets.getItem(position_item));
                                 adapter_budgets.setNotifyOnChange(true);
 
+                                total_budget -= last_amount_selected;
+                                lb_total_spent.setText(String.valueOf(total_budget) + "€");
+                                DecimalFormat f = new DecimalFormat("##.00");
+                                lb_total_spent_percent.setText(f.format((total_budget * 100) / salary) + "%");
                                 dialog.hide();
                             }
                         }
@@ -243,7 +243,7 @@ public class Dashboard extends AppCompatActivity {
             do {
                 Integer id_budget = c.getInt(0);
                 String name = c.getString(1);
-                Double max_amount = c.getDouble(2);
+                Integer max_amount = c.getInt(2);
                 Integer spent = c.getInt(3);
 
                 total_budget += max_amount;
@@ -271,7 +271,7 @@ public class Dashboard extends AppCompatActivity {
         DB salary_db = new DB(getApplicationContext(), db_name, null, 1);
         SQLiteDatabase db = salary_db.getReadableDatabase();
 
-        Cursor c = db.rawQuery("SELECT * FROM SalaryBase", null);
+        Cursor c = db.rawQuery("SELECT * FROM SalaryBase WHERE year !=" + 2016, null);
 
         if (c.moveToFirst()) {
             //Recorremos el cursor hasta que no haya más registros

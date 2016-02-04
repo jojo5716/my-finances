@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -25,6 +24,9 @@ public class AddBudget extends AppCompatActivity{
     private String db_name = "DBSalaryBase2";
     private int current_year =  Calendar.getInstance().get(Calendar.YEAR);
     private int current_month =  Calendar.getInstance().get(Calendar.MONTH);
+    long id_budget_to_create;
+    int id_budget_to_update;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +42,8 @@ public class AddBudget extends AppCompatActivity{
 
         if(parameters != null){
             txt_name.setText(parameters.getString("budget_name"));
-            txt_max_amount.setText(parameters.getString("budget_maxamount"));
+            txt_max_amount.setText(String.valueOf(parameters.getInt("budget_maxamount")));
+            id_budget_to_update = parameters.getInt("budget_id");
         }
 
 
@@ -50,8 +53,6 @@ public class AddBudget extends AppCompatActivity{
 
                 DB salary_db = new DB(getApplicationContext(), db_name, null, 1);
                 SQLiteDatabase db = salary_db.getWritableDatabase();
-
-
 
                 if(db != null){
                     ContentValues vals = new ContentValues();
@@ -63,23 +64,18 @@ public class AddBudget extends AppCompatActivity{
 
                     String sql_second = "";
                     String sql;
-                    long id_budget;
 
 
                     if(parameters != null){
-                        System.out.println("?????????????????");
-
-                        id_budget = parameters.getLong("id_budget");
-                        sql = "UPDATE Budget SET name='"+ budget_name +"' WHERE _id=" + String.valueOf(id_budget);
-                        sql_second = "UPDATE BudgetUse SET max_amount=" + max_amount + " WHERE _id=" + id_budget;
+                        sql = "UPDATE Budget SET name='"+ budget_name +"' WHERE _id=" + id_budget_to_update;
+                        sql_second = "UPDATE BudgetUse SET max_amount=" + max_amount + " WHERE id_budget=" + id_budget_to_update;
 
                     }else{
-                        id_budget = db.insert("Budget", null, vals);
+                        id_budget_to_create = db.insert("Budget", null, vals);
 
                         sql = "INSERT INTO BudgetUse (id_budget, year, month, max_amount, spent) " +
-                                 "VALUES (" + id_budget + "," + current_year + "," + current_month + "," + max_amount + "," + 0 +  ")";
+                                 "VALUES (" + id_budget_to_create + "," + current_year + "," + current_month + "," + max_amount + "," + 0 +  ")";
                     }
-
 
                     db.execSQL(sql);
 

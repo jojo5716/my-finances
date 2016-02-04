@@ -1,16 +1,19 @@
 package com.nextpurchases.jrodriguez.mynextpurchases;
 
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
 /**
  * Created by root on 2/01/16.
  */
 public class Budget {
     private int id;
     private String name;
-    private double max_amount;
+    private int max_amount;
     private double spent;
 
-    public Budget(){
+    public Budget() {
         super();
     }
 
@@ -30,11 +33,11 @@ public class Budget {
         this.name = name;
     }
 
-    public double getMax_amount() {
+    public int getMax_amount() {
         return max_amount;
     }
 
-    public void setMax_amount(double max_amount) {
+    public void setMax_amount(int max_amount) {
         this.max_amount = max_amount;
     }
 
@@ -46,7 +49,7 @@ public class Budget {
         this.spent = spent;
     }
 
-    public Budget(int id, String name, double max_amount, double spent){
+    public Budget(int id, String name, int max_amount, double spent) {
         super();
         this.id = id;
         this.name = name;
@@ -55,11 +58,12 @@ public class Budget {
     }
 
     @Override
-    public String toString(){
-        if(this.id != 0){
+    public String toString() {
+        if (this.id != 0) {
             return this.id + ".- " + this.name + " (" + this.spent + "€ of " + this.max_amount + "€) ";
         }
 
         return "You do not hace any budget yet.";
     }
+
 }
